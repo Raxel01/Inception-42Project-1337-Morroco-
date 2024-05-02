@@ -1,0 +1,31 @@
+version: '3.9'
+
+networks:
+  my-network:
+services:
+  nginx:
+    build: ./requirements/nginx/
+    image: nginx:abait-ta
+    container_name: nginx
+    ports:
+      - '443:443'
+    environment:
+      - .env
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb:abait-ta
+    container_name: mariadb
+    ports:
+      - 9000:9000
+    environment:
+      - .env
+  wordpress:
+    build: ./requirements/wordpress
+    depends_on:
+      - mariadb
+    image: wordpress:abait-ta
+    container_name: wordpress
+    ports:
+      - 3306:3306
+    environment:
+      - .env
