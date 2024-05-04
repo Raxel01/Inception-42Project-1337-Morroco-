@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#Megrate them To .envfile!
-DATA_BASENM="MYDB"
-NEWUSERNAME="CANIS"
-USER_PASSWORD="CANIS2001"
-NEWROOT_PASSWORD="ROOT@NoLiFE"
-#---------------------------------------#
 IFS=$'\n'
 
 for line in $(cat /etc/mysql/mariadb.conf.d/50-server.cnf); do

@@ -10,10 +10,8 @@ server {
     	ssl_certificate_key /etc/nginx/ssl/inception.key;
     	
 		ssl_protocols       TLSv1.3;
-
-    	ssl_ciphers         HIGH:!aNULL:!MD5;
 	
-		root /var/www/html;
+		root /var/www/wordpress;
 
 		#try successively the files 
 		index index.php index.html index.htm;
@@ -26,17 +24,17 @@ server {
 
 		location ~ \.php$ {
 			
-			   fastcgi_index index.php;
+			#    fastcgi_index index.php;
 			   
 			   include fastcgi_params;
 			   
-			#    fastcgi_pass  wordpress:9000;
+			   fastcgi_pass  wordpress:9000;
         	   
 			   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; 
 			   
 			   #it for PHP-FPM to get the valide path to serve files 
-			   fastcgi_param PATH_INFO $fastcgi_path_info;
+			#    fastcgi_param PATH_INFO $fastcgi_path_info;
 			   
-			   fastcgi_param QUERY_STRING    $query_string;
+			#    fastcgi_param QUERY_STRING    $query_string;
         }
 	}

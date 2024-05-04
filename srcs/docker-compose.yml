@@ -1,7 +1,9 @@
 version: '3.9'
 
 networks:
-  my-network:
+  networkService:
+    driver: bridge
+    name: Inception-net
 services:
   nginx:
     build: ./requirements/nginx/
@@ -11,12 +13,24 @@ services:
       - '443:443'
     environment:
       - .env
+    depends_on:
+      - wordpress
+    networks:
+      - networkService
+    volumes:
+      - FirstVM:/var/www/wordpress
   mariadb:
-    build: ./requirements/mariadb
+    build:
+      context: ./requirements/mariadb
+      args:
+        DATA_BASENM: ${DATA_BASENM}
+        NEWUSERNAME: ${NEWUSERNAME}
+        USER_PASSWORD: ${USER_PASSWORD}
+        NEWROOT_PASSWORD: ${NEWROOT_PASSWORD}
     image: mariadb:abait-ta
     container_name: mariadb
-    ports:
-      - 9000:9000
+    networks:
+      - networkService
     environment:
       - .env
   wordpress:
@@ -25,7 +39,19 @@ services:
       - mariadb
     image: wordpress:abait-ta
     container_name: wordpress
-    ports:
-      - 3306:3306
+    networks:
+      - networkService
     environment:
       - .env
+    volumes:
+      - FirstVM:/var/www/wordpress
+volumes:
+  FirstVM:
+    name : nginx-wordpress-VM
+    driver: local
+    driver_opts:
+      type : 'none'
+      o : 'bind'
+      device : /Users/abait-ta/Desktop/Inception/srcs/storeVMS
+
+
