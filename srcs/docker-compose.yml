@@ -29,29 +29,31 @@ services:
         NEWROOT_PASSWORD: ${NEWROOT_PASSWORD}
     image: mariadb:abait-ta
     container_name: mariadb
+    expose:
+      - "3306"
     networks:
       - networkService
-    environment:
+    env_file:
       - .env
+    volumes:
+     - SecondVM:/var/lib/mysql
   wordpress:
-    build: ./requirements/wordpress
+    build:
+      context: ./requirements/wordpress
     depends_on:
       - mariadb
     image: wordpress:abait-ta
     container_name: wordpress
     networks:
       - networkService
-    environment:
+    env_file:
       - .env
+    expose:
+      - "9000"
     volumes:
       - FirstVM:/var/www/wordpress
 volumes:
   FirstVM:
     name : nginx-wordpress-VM
-    driver: local
-    driver_opts:
-      type : 'none'
-      o : 'bind'
-      device : /Users/abait-ta/Desktop/Inception/srcs/storeVMS
-
-
+  SecondVM:
+    name: mariadbVM
