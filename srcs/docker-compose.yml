@@ -42,6 +42,7 @@ services:
       context: ./requirements/wordpress
     depends_on:
       - mariadb
+      - redis
     image: wordpress:abait-ta
     container_name: wordpress
     networks:
@@ -52,6 +53,15 @@ services:
       - "9000"
     volumes:
       - FirstVM:/var/www/wordpress
+  redis:
+    build:
+     context: ./requirements/bonus/redis-service/
+    image: redis:abait-ta
+    container_name: redis
+    ports:
+      - '6379:6379'
+    networks:
+      - networkService
 volumes:
   FirstVM:
     name : nginx-wordpress-VM

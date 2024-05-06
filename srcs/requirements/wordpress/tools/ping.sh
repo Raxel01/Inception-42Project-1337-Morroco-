@@ -22,7 +22,7 @@ if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
     cd /var/www/wordpress/
     wp core download  --allow-root
     touch wp-config.php
-    echo "waaaaaawWWSWWAAWAWAW====================="
+
     chmod 777  wp-config.php
     cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
     sed -i "s/database_name_here/$DATA_BASENM/g" /var/www/wordpress/wp-config.php
@@ -30,8 +30,18 @@ if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
     sed -i "s/password_here/${USER_PASSWORD}/g" /var/www/wordpress/wp-config.php
     sed -i "s/localhost/mariadb/g" /var/www/wordpress/wp-config.php
 
+    #redis setup
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT  6379 --allow-root
+    wp config set WP_CACHE 'true' --allow-root
+
     wp core install --url=$WP_DOMAINNAME --title=$WP_SITETITLE --admin_user=$WP_ADMINENAME --admin_password=$wp_ADMINEPASSWORD --admin_email=$wp_ADMINEMAIL --path='/var/www/wordpress' --allow-root
     wp user create $NEW_WP_USERNAME $NEW_WP_USEREMAIL --role=$NEWWP_USERROLE --user_pass=$NEW_WPUSER_PASSWORD --path='/var/www/wordpress' --allow-root
+
+    wp plugin install redis-cache --allow-root
+    wp plugin activate redis-cache --allow-root 
+    wp redis enable --allow-root
+
 else
     echo "Wordpress is already installed"
 fi

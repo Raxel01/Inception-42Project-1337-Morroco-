@@ -1,4 +1,0 @@
-* wp cli version
-
-* wp -info :
-    - GET INFO ABOUT php,mtsql server configuration
