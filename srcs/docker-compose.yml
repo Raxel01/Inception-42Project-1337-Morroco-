@@ -69,8 +69,21 @@ services:
     container_name: mywebsite
     ports:
      - '2222:80'
+  portainer:
+   build:
+    context: ./requirements/bonus/portainer-service/
+   image: portainer:abait-ta
+   container_name: portainer
+   ports:
+    - '9443:9443'
+   volumes:
+    - third-volume:/data
+    - /var/run/docker.sock:/var/run/docker.sock
 volumes:
   FirstVM:
     name : nginx-wordpress-VM
+    
   SecondVM:
     name: mariadbVM
+  third-volume:
+    name: portainer_data
