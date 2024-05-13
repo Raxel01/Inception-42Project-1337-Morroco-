@@ -1,0 +1,239 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: hsl(0, 0%, 8%);
+
+}
+
+.all-data
+{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.global-holder:hover{
+  box-shadow: 0 0 20px white;
+
+}
+
+.global-holder{
+  background-color: hsl(0, 0%, 12%);
+  width: 400px;
+  height: 600px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 250px 350px;
+  margin-bottom: 20px;
+  transition: 0.4s;
+}
+
+.links{
+  /* background-color: rgb(255, 255, 255); */
+  display: grid;
+  grid-template-columns: repeat(1, 400px);
+  grid-template-rows: repeat(5, 50px);
+  grid-auto-flow: row;
+  gap: 15px;
+}
+
+.github{
+  background-color: hsl(0, 0%, 20%);
+  height: 50px;
+  border-radius: 7px;
+  width: 320px;
+  justify-self: center;
+  transition: 0.9s;
+
+}
+
+
+.github:hover{
+  background-color: hsl(75, 94%, 57%);
+  color: black;
+}
+
+.github a{
+  font-family: sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+
+}
+
+.github a:hover{
+  color: black;
+
+}
+
+.mentor{
+  background-color: hsl(0, 0%, 20%);
+  height: 50px;
+  border-radius: 7px;
+  width: 320px;
+  justify-self: center;
+  transition: 0.9s;
+}
+
+.mentor a{
+  font-family: sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+
+}
+
+.mentor a:hover{
+  color: black;
+
+}
+
+.mentor:hover{
+  background-color: hsl(75, 94%, 57%);
+  color: black;
+}
+
+.linkedin{
+  background-color: hsl(0, 0%, 20%);
+  height: 50px;
+  border-radius: 7px;
+  width: 320px;
+  justify-self: center;
+  transition: 0.9s;
+
+}
+.linkedin a{
+  font-family: sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+
+}
+
+.linkedin a:hover{
+  color: black;
+
+}
+
+.linkedin:hover{
+  background-color: hsl(75, 94%, 57%);
+  color: black;
+}
+
+.twitter{
+  background-color: hsl(0, 0%, 20%);
+  height: 50px;
+  border-radius: 7px;
+  width: 320px;
+  justify-self: center;
+  transition: 0.9s;
+
+
+}
+
+.twitter:hover{
+  background-color: hsl(75, 94%, 57%);
+  color: black;
+}
+.twitter a{
+  font-family: sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+
+}
+
+.twitter a:hover{
+  color: black;
+
+}
+
+.instagram{
+  background-color: hsl(0, 0%, 20%);
+  height:50px;
+  border-radius: 7px;
+  width: 320px;
+  justify-self: center;
+  transition: 0.9s;
+}
+
+.instagram:hover{
+  background-color: hsl(75, 94%, 57%);
+  color: black;
+}
+
+.instagram a{
+  font-family: sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+
+}
+
+.instagram a:hover{
+  color: black;
+
+}
+
+
+
+.jesica{
+  border-radius: 50%;
+  align-self: end;
+  justify-self: center;
+}
+
+.jesica:hover{
+  transform: scale(1.4) rotat÷e(200deg);
+}
+
+.presentation{
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(1, 1fr) ;
+  grid-template-rows: 1fr 35 1fr 1fr ;
+}
+
+.name-location{
+  color: hsl(0, 0%, 100%);
+  font-family: sans-serif;
+  font-size: 11px;
+  align-self: end;
+  justify-self: center;
+}
+
+.name-location-h3{
+  color: hsl(75, 94%, 57%);
+  font-size: 11px;
+  align-self: start;
+  justify-self: center;
+}
+
+.passionate{
+  color: hsl(0, 0%, 75%);
+  align-self: center;
+  justify-self: center;
+}
