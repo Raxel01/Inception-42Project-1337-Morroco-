@@ -82,8 +82,24 @@ services:
 volumes:
   FirstVM:
     name : nginx-wordpress-VM
-    
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: /home/abait-ta/data/wordpress
+
   SecondVM:
     name: mariadbVM
+    driver: local 
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: /home/abait-ta/data/mariadb
+
   third-volume:
     name: portainer_data
+    driver: local 
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: /home/abait-ta/data/portainer
