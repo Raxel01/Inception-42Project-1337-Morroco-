@@ -19,6 +19,7 @@ services:
       - networkService
     volumes:
       - FirstVM:/var/www/wordpress
+    restart: always
   mariadb:
     build:
       context: ./requirements/mariadb
@@ -37,6 +38,7 @@ services:
       - .env
     volumes:
      - SecondVM:/var/lib/mysql
+    restart: always
   wordpress:
     build:
       context: ./requirements/wordpress
@@ -53,6 +55,7 @@ services:
       - "9000"
     volumes:
       - FirstVM:/var/www/wordpress
+    restart: always
   redis:
     build:
      context: ./requirements/bonus/redis-service/
@@ -62,6 +65,7 @@ services:
       - '6379:6379'
     networks:
       - networkService
+    restart: always
   website:
     build:
      context: ./requirements/bonus/static-website/
@@ -69,6 +73,7 @@ services:
     container_name: mywebsite
     ports:
      - '2222:80'
+    restart: on-failure
   portainer:
    build:
     context: ./requirements/bonus/portainer-service/
@@ -79,6 +84,7 @@ services:
    volumes:
     - third-volume:/data
     - /var/run/docker.sock:/var/run/docker.sock
+   restart: on-failure
 volumes:
   FirstVM:
     name : nginx-wordpress-VM
