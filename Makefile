@@ -24,4 +24,4 @@ down:
 fclean:
 	docker compose -f ${COMPOSE} down --rmi all -v
 	docker system prune -af
-	sudo rm -rf ${HOME}/data
+	sudo rm -rf ${HOME}/data 
