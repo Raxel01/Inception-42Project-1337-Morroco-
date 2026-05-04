@@ -1,10 +1,8 @@
 PROJECT = Inception
 
 VFOLDER = ${HOME}/data
-# stand For volume Folders
 
-# full docker-compose path
-COMPOSE = /home/abait-ta/Desktop/Inception-42Project-1337-Morroco-/srcs/docker-compose.yml
+COMPOSE = $$PWD/srcs/docker-compose.yml
 
 folders:
 	mkdir -p ${VFOLDER}
@@ -13,14 +11,18 @@ folders:
 	mkdir -p ${VFOLDER}/portainer
 
 up: folders
-	docker compose -f ${COMPOSE} up
+	docker compose -f ${COMPOSE} up -d
 
 stop:
 	docker compose -f ${COMPOSE} stop
 start:
 	docker compose -f ${COMPOSE} start
+restart:
+	docker compose -f ${COMPOSE} restart 
 down:
-	docker compose -f ${COMPOSE} down
+	docker compose -f ${COMPOSE} down -v
+	sudo rm -rf ${HOME}/data
+
 fclean:
 	docker compose -f ${COMPOSE} down --rmi all -v
 	docker system prune -af
